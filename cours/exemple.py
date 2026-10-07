@@ -1,4 +1,4 @@
-user= "Admin"
+user = "Admin"
 ip = "10.0.0.5"
 attempts = "3"
 print(user.lower() + "@" + ip[-1])
