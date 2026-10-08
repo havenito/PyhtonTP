@@ -21,19 +21,20 @@ def check_password(password, is_admin=False):
         error.append("au moins un caractère spécial")
     if normalized_password in [reserved.lower() for reserved in COMMON_PASSWORDS]:
         error.append ("Le mot de passe ne doit pas être courant")
-    result = (True, error) if not error else (False, error)
+    result = (True, error) if not error else (False, error) 
     return result
 
-print(check_password("Tr0ub4dour&Co"))
-# (True, [])
-print(check_password("Azerty123456!"))
-# (False, ['ne doit pas être un mot de passe courant'])
-print(check_password("azerty"))
-# (False, ['au moins 12 caractères', 'au moins une majuscule',
-#          'au moins un chiffre', 'au moins un caractère spécial',
-#          'ne doit pas être un mot de passe courant'])
-print(check_password("correcthorse battery staple"))
-# (False, ['au moins une majuscule', 'au moins un chiffre'])
-print(check_password("Tr0ub4dour&Co", is_admin=True))
-# (False, ['au moins 16 caractères']
-print(check_password("TEst1234333333333333."))
+if __name__ == "__main__":
+    print(check_password("Tr0ub4dour&Co"))
+    # (True, [])
+    print(check_password("Azerty123456!"))
+    # (False, ['ne doit pas être un mot de passe courant'])
+    print(check_password("azerty"))
+    # (False, ['au moins 12 caractères', 'au moins une majuscule',
+    #          'au moins un chiffre', 'au moins un caractère spécial',
+    #          'ne doit pas être un mot de passe courant'])
+    print(check_password("correcthorse battery staple"))
+    # (False, ['au moins une majuscule', 'au moins un chiffre'])
+    print(check_password("Tr0ub4dour&Co", is_admin=True))
+    # (False, ['au moins 16 caractères']
+    print(check_password("TEst1234333333333333."))
