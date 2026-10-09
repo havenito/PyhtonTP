@@ -76,8 +76,28 @@ def display_crew(crew):
         print("Aucun membre n'est disponible")
     return
 
-def check_crew(crew): 
-    return 
+def check_crew(crew):
+    pilote = False
+    technicien = False
+
+    for membre in crew:
+        if membre["role"] == "pilote":
+            pilote = True
+        if membre["role"] == "technicien":
+            technicien = True
+
+    if len(crew) >= 2 and pilote and technicien:
+        print("L'équipage est prêt pour la mission !")
+        return True
+
+    print("L'équipage n'est pas prêt, il manque :")
+    if len(crew) < 2:
+        print("au moins 2 membres")
+    if not pilote:
+        print("un pilote")
+    if not technicien:
+        print("un technicien")
+    return False
 
 def quitter():
     print("Au revoir ! ")
