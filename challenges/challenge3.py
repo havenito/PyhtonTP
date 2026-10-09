@@ -20,7 +20,6 @@ if __name__ == "__main__":
 
     for _ in range(1000):
         mdp = generate_password()
-        # On stocke le résultat pour que ce soit plus clair
         est_valide, message = check_password(mdp) 
         
         if not est_valide:
