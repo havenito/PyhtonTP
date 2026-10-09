@@ -25,7 +25,7 @@ def menu():
                 remove_member(crew)
                 break
             case 3: 
-                display_crew()
+                display_crew(crew)
                 break
             case 4:
                 check_crew()

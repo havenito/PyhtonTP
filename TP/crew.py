@@ -67,12 +67,18 @@ def remove_member(crew):
         return crew
 
 def display_crew(crew): 
+    compteur = 0
+    for i in crew:
+        print(f"Prénom : {i['first_name']}, Nom : {i['last_name']}, Genre : {i['gender']}, Age : {i['age']}, Rôle : {i['role']}")
+        compteur += 1
+        if compteur == 0:
+            print("Aucun membre n'est disponible")
     return
 
 def check_crew(crew): 
     return 
 
-def quitter(crew):
+def quitter():
     print("Au revoir ! ")
-    exit(0)
+    exit()
     return
