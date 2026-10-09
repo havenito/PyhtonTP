@@ -22,7 +22,7 @@ def menu():
                 add_member(crew)
                 break
             case 2: 
-                remove_member()
+                remove_member(crew)
                 break
             case 3: 
                 display_crew()
