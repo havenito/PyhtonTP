@@ -15,17 +15,21 @@ class Person:
         self.last_name = last_name
         self.gender = gender
         self.age = age
-        self.introduce_yourself()
-        
+    
+    @property
+    def name(self):
+       return f"{self.first_name} {self.last_name}".strip()
+       
     def introduce_yourself(self):
-        print(f"Je m'appelle {self.first_name} {self.last_name}, je suis un {self.gender} de {self.age} ans.")
-        if not self.last_name:
-            print("")
+        if self.gender == "M":
+            sexe = "homme"
+        else:
+            sexe = "femme"
+        return f"Je m'appelle {self.name}, je suis un {sexe} de {self.age} ans."
         
     def __str__(self):
-        return f"{self.first_name} {self.last_name}, ({self.gender}, {self.age})"
+        return f"{self.name} ({self.gender}, {self.age} ans)"
 
-        
         
         
     
