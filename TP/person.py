@@ -59,3 +59,40 @@ class Operator(Person):
 
     def __str__(self):
         return f"{super().__str__()} {self.role}"
+    
+class Mentalist(Person):
+    def __init__(self, first_name, last_name, gender, age, mana=100):
+        super().__init__(first_name, last_name, gender, age)
+        self.mana = mana
+        
+    @property
+    def mana(self):
+        return self._mana
+    
+    @mana.setter
+    def mana(self, value):
+        if value < 0:
+            self._mana = 0
+        elif value > 100:
+            self._mana = 100
+        else:
+            self._mana = value
+        
+    def act(self):
+        print (f"{self.name} se concentre.")
+        self.mana += 10
+    
+    def recharge_mana(self):
+        self.mana += 50 
+        print(f"{self.name} recharge son mana. Mana : {self.mana}")
+    
+    def influence(self, operator):
+        if self.mana < 20:
+            print(f"{self.name} n'a pas assez de mana pour influencer {operator.name}.")
+            return False
+        self.mana -= 20
+        operator.act()
+        return True
+
+    def __str__(self):
+        return f"{super().__str__()} - mentaliste, {self.mana} mana"
