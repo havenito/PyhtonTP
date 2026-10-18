@@ -1,3 +1,6 @@
+from ast import operator
+
+
 ROLES = ["commandant", "pilote", "technicien", "armurier", "marchand", "entretien"]
 
 ACTIONS = {
@@ -43,7 +46,7 @@ class Operator(Person):
     @role.setter
     def role(self, value):
         if value not in ROLES:
-            raise ValueError(f"Rôle inconnu : {value}. Rôles valides : {ROLES}")
+            raise ValueError(f"rôle inconnu : {value}")
         self._role = value
 
     @property
@@ -58,7 +61,7 @@ class Operator(Person):
         self.gain_experience()
 
     def __str__(self):
-        return f"{super().__str__()} {self.role}"
+        return f"{super().__str__()} - {self.role}"
     
 class Mentalist(Person):
     def __init__(self, first_name, last_name, gender, age, mana=100):
@@ -84,13 +87,13 @@ class Mentalist(Person):
     
     def recharge_mana(self):
         self.mana += 50 
-        print(f"{self.name} recharge son mana. Mana : {self.mana}")
     
     def influence(self, operator):
         if self.mana < 20:
             print(f"{self.name} n'a pas assez de mana pour influencer {operator.name}.")
             return False
         self.mana -= 20
+        print(f"{self.name} influence {operator.name}.")
         operator.act()
         return True
 
