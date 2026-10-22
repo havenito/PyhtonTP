@@ -1,3 +1,7 @@
+from person import Operator, Mentalist
+from spaceship import Spaceship
+from fleet import Fleet
+
 ROLES = ["commandant", "pilote", "technicien", "armurier", "marchand", "entretien"]
 
 
@@ -103,3 +107,26 @@ def quitter():
     print("Au revoir ! ")
     exit()
     return
+
+def build_fleet(data):
+    fleet = Fleet(data["name"])
+
+    for ship_data in data["spaceships"]:
+        ship = Spaceship(ship_data["name"], ship_data["ship_type"], ship_data["condition"])
+
+        for member_data in ship_data["crew"]:
+            first_name = member_data["first_name"]
+            last_name = member_data["last_name"]
+            gender = member_data["gender"]
+            age = member_data["age"]
+
+            if member_data["type"] == "operator":
+                member = Operator(first_name, last_name, gender, age, member_data["role"])
+            elif member_data["type"] == "mentalist":
+                member = Mentalist(first_name, last_name, gender, age, member_data["mana"])
+
+            ship.add_member(member)
+
+        fleet.add_spaceship(ship)
+
+    return fleet
