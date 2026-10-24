@@ -1,9 +1,8 @@
-from person import Operator, Mentalist
+from person import Operator, Mentalist, ROLES
 from spaceship import Spaceship
 from fleet import Fleet
 
-ROLES = ["commandant", "pilote", "technicien", "armurier", "marchand", "entretien"]
-
+#TP1
 
 def add_member(crew):
     new_crew = {"first_name": "", "last_name": "", "gender": "", "age": 0, "role": ""}
@@ -130,3 +129,143 @@ def build_fleet(data):
         fleet.add_spaceship(ship)
 
     return fleet
+
+
+#TP2
+def ask_spaceship(fleet):
+    name = input("Nom du vaisseau : ")
+    ship = fleet.find_spaceship(name)
+    if ship is None:
+        print(f"Le vaisseau {name} n'existe pas !")
+    return ship
+
+
+def add_crew_member(fleet):
+    ship = ask_spaceship(fleet)
+    if ship is None:
+        return
+
+    MIN_LENGTH = 3
+    MAX_LENGTH = 15
+    while True:
+        kind = input("Opérateur ou mentaliste (o/m) : ")
+        if kind not in ("o", "m"):
+            print("Tapez o pour opérateur ou m pour mentaliste")
+            continue
+
+        first_name = input("Votre prénom : ")
+        if len(first_name) < MIN_LENGTH or len(first_name) > MAX_LENGTH:
+            print(f"Votre prénom {first_name} doit faire entre {MIN_LENGTH} et {MAX_LENGTH} caractères")
+            continue
+        print(f"Votre prénom {first_name} a bien été enregistré")
+
+        while True:
+            last_name = input("Votre nom (vide si aucun) : ")
+            if last_name != "" and (len(last_name) < MIN_LENGTH or len(last_name) > MAX_LENGTH):
+                print(f"Votre nom {last_name} doit faire entre {MIN_LENGTH} et {MAX_LENGTH} caractères")
+            elif ship.find_member(last_name or first_name) is not None:
+                print(f"Votre nom {last_name or first_name} existe déjà sur {ship.name}")
+            else:
+                print(f"Votre nom {last_name} a bien été enregistré")
+                break
+
+        gender = input("Votre genre (F ou M) : ")
+        if gender not in ("F", "M"):
+            print(f"Votre genre {gender} doit être soit F soit M")
+            continue
+        print(f"Votre genre {gender} a bien été enregistré")
+
+        try:
+            age = int(input("Votre âge : "))
+        except ValueError:
+            print("Votre âge doit être un nombre")
+            continue
+        print(f"Votre âge {age} a bien été enregistré")
+
+        if kind == "o":
+            role = input("Votre rôle : ")
+            if role not in ROLES:
+                print(f"Veuillez saisir un rôle parmi cette liste {ROLES} ! ")
+                continue
+            print(f"Votre rôle {role} a bien été enregistré ! ")
+            member = Operator(first_name, last_name, gender, age, role)
+        else:
+            member = Mentalist(first_name, last_name, gender, age)
+
+        ship.add_member(member)          
+        print(f"{member.name} a bien été ajouté à {ship.name} !")
+        return
+
+
+def remove_crew_member(fleet):
+    ship = ask_spaceship(fleet)
+    if ship is None:
+        return
+
+    compteur = 0
+    delete_crew = input("Veuillez entrer un nom pour supprimer la totalité des informations : ")
+    for i in range(len(ship.crew)):
+        member = ship.crew[i]
+        if (member.last_name or member.first_name) == delete_crew:
+            compteur += 1
+            del ship.crew[i]
+            print(f"Le membre {delete_crew} a bien été supprimé ! ")
+            break
+
+    if compteur == 0:
+        print(f"Le membre {delete_crew} n'existe pas !")
+
+
+def display_fleet(fleet):
+    if len(fleet.spaceships) == 0:
+        print("Aucun vaisseau n'est disponible")
+    for ship in fleet.spaceships:
+        print(ship)
+        compteur = 0
+        for member in ship.crew:
+            compteur += 1
+            if isinstance(member, Operator):
+                role = member.role
+            else:
+                role = "mentaliste"
+            print(f"{compteur}. Prénom : {member.first_name}, Nom : {member.last_name}, "
+                  f"Genre : {member.gender}, Age : {member.age}, Rôle : {role}")
+        if compteur == 0:
+            print("Aucun membre n'est disponible")
+
+
+def check_spaceship(fleet):
+    ship = ask_spaceship(fleet)
+    if ship is None:
+        return False
+
+    pilote = False
+    technicien = False
+    for member in ship.crew:
+        if isinstance(member, Operator):     
+            if member.role == "pilote":
+                pilote = True
+            if member.role == "technicien":
+                technicien = True
+
+    if pilote and technicien:
+        print(f"{ship.name} est prêt pour la mission !")
+        return True
+
+    print(f"{ship.name} n'est pas prêt, il manque :")
+    if not pilote:
+        print("un pilote")
+    if not technicien:
+        print("un technicien")
+    return False
+
+
+def add_spaceship(fleet):
+    name = input("Nom du vaisseau : ")
+    ship_type = input("Type (transport, guerre ou marchand) : ")
+    if ship_type not in ("transport", "guerre", "marchand"):
+        print("Le type doit être transport, guerre ou marchand")
+        return
+
+    fleet.add_spaceship(Spaceship(name, ship_type))   
+    print(f"Le vaisseau {name} a bien été ajouté !")

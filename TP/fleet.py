@@ -29,8 +29,6 @@ class Fleet:
         total_experience = 0
         ready = 0
         roles = {}
-        for role in ROLES:
-            roles[role] = 0
 
         for spaceship in self.spaceships:
             if spaceship.check_preparation():
@@ -40,21 +38,21 @@ class Fleet:
                 if isinstance(member, Operator):
                     operators += 1
                     total_experience += member.experience
-                    roles[member.role] += 1
+                    if member.role in roles:
+                        roles[member.role] += 1
+                    else:
+                        roles[member.role] = 1
                 elif isinstance(member, Mentalist):
                     mentalists += 1
 
         if operators > 0:
             average = total_experience / operators
         else:
-            average = 0
-            
-        print(f"Flotte {self.name}")
-        print(f"Vaisseaux : {len(self.spaceships)}")
-        print(f"Membres : {members}")
-        print("Répartition par rôle :")
-        for role in ROLES:
-            print(f"  {role} : {roles[role]}")
-        print(f"Mentalistes : {mentalists}")
+            average = 0.0
+
+        print(f"Flotte {self.name} : {len(self.spaceships)} vaisseaux, {members} membres")
+        for role in roles:
+            print(f"{role} : {roles[role]}")
+        print(f"mentaliste : {mentalists}")
         print(f"Expérience moyenne des opérateurs : {average:.1f}")
-        print(f"Vaisseaux prêts : {ready}")
+        print(f"Vaisseaux prêts : {ready} / {len(self.spaceships)}")
