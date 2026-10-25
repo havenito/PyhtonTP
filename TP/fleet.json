@@ -1,0 +1,253 @@
+{
+  "name": "Galactica",
+  "spaceships": [
+    {
+      "name": "Bayta",
+      "ship_type": "marchand",
+      "condition": "opérationnel",
+      "crew": [
+        {
+          "first_name": "Hugo",
+          "last_name": "Crast",
+          "gender": "M",
+          "age": 37,
+          "type": "operator",
+          "role": "pilote",
+          "experience": 0
+        },
+        {
+          "first_name": "Gaal",
+          "last_name": "Dornick",
+          "gender": "F",
+          "age": 34,
+          "type": "operator",
+          "role": "technicien",
+          "experience": 0
+        },
+        {
+          "first_name": "Lathan",
+          "last_name": "Devers",
+          "gender": "M",
+          "age": 46,
+          "type": "operator",
+          "role": "marchand",
+          "experience": 0
+        },
+        {
+          "first_name": "Novi",
+          "last_name": "Sura",
+          "gender": "F",
+          "age": 25,
+          "type": "operator",
+          "role": "entretien",
+          "experience": 0
+        }
+      ]
+    },
+    {
+      "name": "Dark Nebula",
+      "ship_type": "guerre",
+      "condition": "endommagé",
+      "crew": [
+        {
+          "first_name": "Jagger",
+          "last_name": "Fount",
+          "gender": "M",
+          "age": 41,
+          "type": "operator",
+          "role": "pilote",
+          "experience": 0
+        },
+        {
+          "first_name": "Munn",
+          "last_name": "Compor",
+          "gender": "M",
+          "age": 27,
+          "type": "operator",
+          "role": "technicien",
+          "experience": 0
+        },
+        {
+          "first_name": "Salvor",
+          "last_name": "Hardin",
+          "gender": "F",
+          "age": 28,
+          "type": "operator",
+          "role": "armurier",
+          "experience": 0
+        },
+        {
+          "first_name": "Ebling",
+          "last_name": "Mis",
+          "gender": "M",
+          "age": 34,
+          "type": "operator",
+          "role": "entretien",
+          "experience": 0
+        },
+        {
+          "first_name": "Tellem",
+          "last_name": "Bond",
+          "gender": "M",
+          "age": 48,
+          "type": "mentalist",
+          "mana": 100
+        }
+      ]
+    },
+    {
+      "name": "Fearless",
+      "ship_type": "guerre",
+      "condition": "opérationnel",
+      "crew": [
+        {
+          "first_name": "Bel",
+          "last_name": "Riose",
+          "gender": "M",
+          "age": 48,
+          "type": "operator",
+          "role": "commandant",
+          "experience": 0
+        },
+        {
+          "first_name": "Hober",
+          "last_name": "Mallow",
+          "gender": "M",
+          "age": 52,
+          "type": "operator",
+          "role": "pilote",
+          "experience": 0
+        },
+        {
+          "first_name": "Yugo",
+          "last_name": "Amary",
+          "gender": "M",
+          "age": 33,
+          "type": "operator",
+          "role": "technicien",
+          "experience": 0
+        },
+        {
+          "first_name": "Han",
+          "last_name": "Pritcher",
+          "gender": "M",
+          "age": 31,
+          "type": "operator",
+          "role": "armurier",
+          "experience": 0
+        },
+        {
+          "first_name": "Harlan",
+          "last_name": "Branno",
+          "gender": "F",
+          "age": 38,
+          "type": "operator",
+          "role": "entretien",
+          "experience": 0
+        },
+        {
+          "first_name": "Yanna",
+          "last_name": "Seldon",
+          "gender": "F",
+          "age": 52,
+          "type": "mentalist",
+          "mana": 100
+        }
+      ]
+    },
+    {
+      "name": "Unimara",
+      "ship_type": "marchand",
+      "condition": "opérationnel",
+      "crew": [
+        {
+          "first_name": "Fallom",
+          "last_name": "",
+          "gender": "F",
+          "age": 28,
+          "type": "operator",
+          "role": "pilote",
+          "experience": 0
+        },
+        {
+          "first_name": "Toran",
+          "last_name": "Darell",
+          "gender": "M",
+          "age": 52,
+          "type": "operator",
+          "role": "technicien",
+          "experience": 0
+        },
+        {
+          "first_name": "Limmar",
+          "last_name": "Ponyets",
+          "gender": "M",
+          "age": 43,
+          "type": "operator",
+          "role": "marchand",
+          "experience": 0
+        },
+        {
+          "first_name": "Jord",
+          "last_name": "Commasson",
+          "gender": "M",
+          "age": 53,
+          "type": "operator",
+          "role": "entretien",
+          "experience": 0
+        },
+        {
+          "first_name": "Joie",
+          "last_name": "",
+          "gender": "F",
+          "age": 25,
+          "type": "mentalist",
+          "mana": 100
+        }
+      ]
+    },
+    {
+      "name": "Weinis",
+      "ship_type": "marchand",
+      "condition": "endommagé",
+      "crew": [
+        {
+          "first_name": "Lewis",
+          "last_name": "Pirenne",
+          "gender": "M",
+          "age": 34,
+          "type": "operator",
+          "role": "pilote",
+          "experience": 0
+        },
+        {
+          "first_name": "Stora",
+          "last_name": "Gendibal",
+          "gender": "F",
+          "age": 35,
+          "type": "operator",
+          "role": "technicien",
+          "experience": 0
+        },
+        {
+          "first_name": "Eskel",
+          "last_name": "Gorov",
+          "gender": "M",
+          "age": 32,
+          "type": "operator",
+          "role": "marchand",
+          "experience": 0
+        },
+        {
+          "first_name": "Bayta",
+          "last_name": "Darell",
+          "gender": "F",
+          "age": 48,
+          "type": "operator",
+          "role": "entretien",
+          "experience": 0
+        }
+      ]
+    }
+  ]
+}
