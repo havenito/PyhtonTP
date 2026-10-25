@@ -7,7 +7,16 @@ class Fleet:
 
     def __init__(self, name):
         self.name = name
-        self.spaceships = []          
+        self.spaceships = []    
+    
+    def to_dict(self):
+        spaceships = []
+        for spaceship in self.spaceships:
+            spaceships.append(spaceship.to_dict())
+        return {
+            "name": self.name,
+            "spaceships": spaceships
+        }      
 
     def add_spaceship(self, spaceship):
         if len(self.spaceships) >= Fleet.MAX_SPACESHIPS:

@@ -11,6 +11,17 @@ class Spaceship:
         self.ship_type = ship_type   
         self.condition = condition    
         self.crew = []              
+    
+    def to_dict(self):
+        crew = []
+        for member in self.crew:
+            crew.append(member.to_dict())
+        return {
+            "name": self.name,
+            "ship_type": self.ship_type,
+            "condition": self.condition,
+            "crew": crew
+        }
 
     def _key(self, member):
         if member.last_name != "":

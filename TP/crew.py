@@ -107,6 +107,7 @@ def quitter():
     exit()
     return
 
+#TP2
 def build_fleet(data):
     fleet = Fleet(data["name"])
 
@@ -121,6 +122,7 @@ def build_fleet(data):
 
             if member_data["type"] == "operator":
                 member = Operator(first_name, last_name, gender, age, member_data["role"])
+                member._experience = member_data.get("experience", 0)
             elif member_data["type"] == "mentalist":
                 member = Mentalist(first_name, last_name, gender, age, member_data["mana"])
 
@@ -130,8 +132,6 @@ def build_fleet(data):
 
     return fleet
 
-
-#TP2
 def ask_spaceship(fleet):
     name = input("Nom du vaisseau : ")
     ship = fleet.find_spaceship(name)

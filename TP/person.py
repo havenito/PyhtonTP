@@ -22,6 +22,14 @@ class Person:
     @property
     def name(self):
        return f"{self.first_name} {self.last_name}".strip()
+   
+    def to_dict(self):
+        return {
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "gender": self.gender,
+            "age": self.age,
+        }
        
     def introduce_yourself(self):
         if self.gender == "M":
@@ -52,6 +60,13 @@ class Operator(Person):
     @property
     def experience(self):
         return self._experience
+    
+    def to_dict(self):
+        data = super().to_dict()         
+        data["type"] = "operator"
+        data["role"] = self.role
+        data["experience"] = self.experience
+        return data
 
     def gain_experience(self):
         self._experience += 1
@@ -80,6 +95,12 @@ class Mentalist(Person):
             self._mana = 100
         else:
             self._mana = value
+    
+    def to_dict(self):
+        data = super().to_dict()
+        data["type"] = "mentalist"
+        data["mana"] = self.mana
+        return data
         
     def act(self):
         print (f"{self.name} se concentre.")
