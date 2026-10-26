@@ -20,7 +20,7 @@ def save_menu(fleet):
     print(f"Flotte sauvegardée dans {path}")
 
 def load_menu(fleet):
-    path = input("Fichier de chargement [fleet.json] : ")
+    path = input("Fichier à charger [fleet.json] : ")
     if path == "":
         path = "fleet.json"
     try:
@@ -34,7 +34,7 @@ def load_menu(fleet):
 def menu():
     global fleet
     while True:
-        print("===== Flotte marchande - Gestion de l'équipage =====")
+        print("===== Flotte marchande - Poste de commandement =====")
         print("[1] Ajouter un membre")
         print("[2] Retirer un membre")
         print("[3] Afficher la flotte")
