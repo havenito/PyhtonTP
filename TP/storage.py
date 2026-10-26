@@ -17,5 +17,7 @@ def load_fleet(path):
         raise ValueError(f"la sauvergarde \"{path}\" est corrompue")
     except KeyError:
         raise ValueError(f"la sauvergarde \"{path}\" est incomplète")
+    except TypeError:
+        raise ValueError(f"la sauvergarde \"{path}\" est invalide")
     return fleet
         
